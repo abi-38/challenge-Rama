@@ -13,11 +13,21 @@ h1{
 }
 
 article {
-    background-color: #DBDBDB;
-    color: ;
+    background-color: #4C4C4C;
+    color:  #DBDBDB;
+    border-bottom: #DBDBDB solid 1px;
+    border-right: #DBDBDB solid 1px;
 }
 
-img {
+article h3{
+    cursor: pointer;
+}
+
+article h3:hover {
+    color: #85C7F2;
+}
+
+.imgPres {
     width: 50%;
     height: 50%;
 }
@@ -34,6 +44,7 @@ aside {
     display: flex;
     justify-content: center;
     margin-top: 5%;
+    margin-bottom: 5%;
 }
 #query{
     width: 50%;

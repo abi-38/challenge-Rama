@@ -32,10 +32,10 @@ search.addEventListener('click', function(){
 });
 
 const showFilms = (filmsArray) =>{
-    for(objet of filmsArray){
+    for(filmObject of filmsArray){
         const article = document.createElement('article');
         section.appendChild(article);
-        article.classList.add('col-12', 'col-md-6', 'col-lg-4', 'm1');
+        article.classList.add('col-12', 'col-md-6', 'col-lg-4', 'mt-2');
         for(element in filmObject) {
             if(element === 'title'){
                 let filmTitle = document.createElement('h3');
@@ -62,12 +62,12 @@ const showFilms = (filmsArray) =>{
             }                
             else if(element === 'image'){
                 let image = document.createElement('p');
-                image.innerHTML += `<img src="${objet[element]}"></img>`;
+                image.innerHTML += `<img class="imgPres" src="${filmObject[element]}"></img>`;
                 article.appendChild(image) 
                 
             } else if(element === 'description') {
                 let year = document.createElement('p');
-                year.textContent = `Year : ${objet[element]}`;
+                year.textContent = `Year : ${filmObject[element]}`;
                 article.appendChild(year)
             }
         }
