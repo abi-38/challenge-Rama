@@ -1,0 +1,74 @@
+body{
+    background-color: #4C4C4C;
+    font-family: 'Raleway', sans-serif;
+}
+
+h1{
+    font-size: 5em;
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    text-align: center;
+    color: #D1D1D1;
+}
+
+article {
+    background-color: #4C4C4C;
+    color:  #DBDBDB;
+    border-bottom: #DBDBDB solid 1px;
+    border-right: #DBDBDB solid 1px;
+}
+
+article h3{
+    cursor: pointer;
+}
+
+article h3:hover {
+    color: #85C7F2;
+}
+
+.imgPres {
+    width: 50%;
+    height: 50%;
+}
+aside {
+    width: 60%;
+    height: 80%;
+    background-color: aliceblue;
+    position: fixed;
+    top: 15%;
+    right: 15%;
+    overflow: scroll;
+}
+.reqField{
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#query{
+    width: 50%;
+    font-size: 2em;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #636363;
+    background-color:  #4C4C4C;
+    color: #D1D1D1;
+}
+#search{
+    width: 10%;
+    border: 1px solid #D1D1D1;
+    margin-left: 1%;
+    background-color:  #4C4C4C;
+    color: #D1D1D1;
+}
+@media screen and (max-width: 450px) {
+    h1{
+        font-size: 3em;
+    }
+}
+
+/* gainsboro #DBDBDB
+light sky blue #85C7F2
+dim grey #636363 */
