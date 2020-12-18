@@ -3,6 +3,10 @@ main {
     text-align: center;
     background-color: black;
 }
+#logo {
+    width: auto;
+    height: 45px;
+}
 header{
     background: url(img/cimena2.jpg) no-repeat center center;
     background-size: cover;
@@ -35,6 +39,21 @@ div > a {
 }
 a.dropdown-item {
     color: rgba(0,0,0,.5) !important;
+}
+#imageFooter {
+    width: auto;
+    height: 200px;
+}
+ul.ul {
+    list-style:none;
+    margin-left:0;
+    padding-left:0;
+}
+li.li > a {
+    color: rgba(0,0,0,.5);
+}
+footer {
+    padding: 10px;
 }
 @media (max-width: 700px) {
     .bloc {
