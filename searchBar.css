@@ -34,11 +34,13 @@ article h3:hover {
 aside {
     width: 60%;
     height: 80%;
-    background-color: aliceblue;
+    padding: 1%;
+    background-color: #DBDBDB;
     position: fixed;
     top: 15%;
     right: 15%;
     overflow: scroll;
+    text-align: justify;
 }
 .reqField{
     display: flex;
@@ -62,6 +64,9 @@ aside {
     margin-left: 1%;
     background-color:  #4C4C4C;
     color: #D1D1D1;
+}
+.actorImg{
+    height: 100%;
 }
 @media screen and (max-width: 450px) {
     h1{

@@ -32,11 +32,11 @@ search.addEventListener('click', function(){
 });
 
 const showFilms = (filmsArray) =>{
-    for(filmObject of filmsArray){
+    for(const filmObject of filmsArray){
         const article = document.createElement('article');
         section.appendChild(article);
         article.classList.add('col-12', 'col-md-6', 'col-lg-4', 'mt-2');
-        for(element in filmObject) {
+        for(const element in filmObject) {
             if(element === 'title'){
                 let filmTitle = document.createElement('h3');
                 filmTitle.textContent = `${filmObject[element]}`;
@@ -78,17 +78,66 @@ const showDetails = (filmDetails) =>{
     const popup = document.createElement('aside');
     section.appendChild(popup);
     const bouton = document.createElement('button');
-    bouton.textContent = 'X';
+    bouton.textContent = 'Close';
     bouton.id = 'bouton';
     popup.appendChild(bouton);
-                            let list = document.createElement('ul');
-    popup.appendChild(list);
-    for (property in filmDetails){
-    let line = document.createElement('li');
-    line.textContent = `${filmDetails[property]}`;
-    list.appendChild(line);
+    //affichage des éléments
+    for (const property in filmDetails){
+        if(property === 'title'){
+            let movieTitle = document.createElement('h3');
+            movieTitle.textContent = filmDetails[property];
+            popup.appendChild(movieTitle);
+        } 
+        else if (property === 'releaseDate'){
+            let movieDate = document.createElement('p');
+            movieDate.textContent = `Release date: ${filmDetails[property]}`;
+            popup.appendChild(movieDate);
+        }   else if (property === 'runtimeStr'){
+            let movieRuntime = document.createElement('p');
+            movieRuntime.textContent = `Runtime: ${filmDetails[property]}`;
+            popup.appendChild(movieRuntime)
+        } else if (property === 'plot') {
+            let moviePlot = document.createElement('p');
+            moviePlot.textContent = filmDetails[property];
+            popup.appendChild(moviePlot);
+        } else if(property === 'directors'){
+            let movieDir = document.createElement('p');
+            movieDir.textContent = `Director: ${filmDetails[property]}`;
+            popup.appendChild(movieDir);
+        } else if(property === 'writers'){
+            let movieWrit = document.createElement('p');
+            movieWrit.textContent = `Writer: ${filmDetails[property]}`;
+            popup.appendChild(movieWrit)
+        } else if(property === 'genres'){
+            let movieGenre = document.createElement('p');
+            movieGenre.textContent = `Genre: ${filmDetails[property]}`;
+            popup.appendChild(movieGenre);
+        } else if(property === 'actorList'){
+            let actorsDiv = document.createElement('div');
+            actorsDiv.classList.add('card-group');
+            popup.appendChild(actorsDiv);
+            for(const actor of filmDetails[property]){
+            let actorCard = document.createElement('div');
+            actorCard.classList.add('col-4');
+            actorsDiv.appendChild(actorCard);
+                        let actorImg = document.createElement('div');
+                        actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top"></img>`;
+                        actorCard.appendChild(actorImg);
+                    
+                        let actorName = document.createElement('h5');
+                        actorName.textContent = actor.name;
+                        actorCard.appendChild(actorName);
+                    
+                        let actorChar = document.createElement('p');
+                        actorChar.textContent = `as ${actor.asCharacter}`;
+                        actorCard.appendChild(actorChar);
+                    
+                    actorsDiv.appendChild(actorCard)
+                }
+            }
+        }
     bouton.addEventListener('click', ()=>{
         popup.innerHTML = '';
         section.removeChild(popup);
     })
-}}
+}
