@@ -40,6 +40,7 @@ function boxOffice() {
     xhr.send();
 }
 
+// la fonction de la requête seconde requête
 function mostPopular() {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener("readystatechange", function() {
@@ -69,9 +70,14 @@ function mostPopular() {
     xhr.send();
 }
 
+// lancement des requêtes à la fin du chargement de la page
 async function requetes() {
     const premiereRequete = await window.addEventListener('load', boxOffice);
     const secondeRequete = await window.addEventListener('load', mostPopular);
 }
 requetes();
 
+let titreElt = document.querySelectorAll('titre');
+titreElt.addEventListener('click', function() {
+    console.log('coucou')
+})
