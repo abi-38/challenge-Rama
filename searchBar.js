@@ -81,63 +81,129 @@ const showDetails = (filmDetails) =>{
     bouton.textContent = 'Close';
     bouton.id = 'bouton';
     popup.appendChild(bouton);
-    //affichage des éléments
-    for (const property in filmDetails){
-        if(property === 'title'){
+
+//test avec le switch
+for (const property in filmDetails){
+    switch(property){
+        case 'title':
             let movieTitle = document.createElement('h3');
             movieTitle.textContent = filmDetails[property];
             popup.appendChild(movieTitle);
-        } 
-        else if (property === 'releaseDate'){
+            break;
+        case 'releaseDate':
             let movieDate = document.createElement('p');
             movieDate.textContent = `Release date: ${filmDetails[property]}`;
             popup.appendChild(movieDate);
-        }   else if (property === 'runtimeStr'){
+            break;
+        case 'runtimeStr':
             let movieRuntime = document.createElement('p');
             movieRuntime.textContent = `Runtime: ${filmDetails[property]}`;
             popup.appendChild(movieRuntime)
-        } else if (property === 'plot') {
+            break;
+        case 'plot':
             let moviePlot = document.createElement('p');
             moviePlot.textContent = filmDetails[property];
             popup.appendChild(moviePlot);
-        } else if(property === 'directors'){
+            break;
+        case 'directors':
             let movieDir = document.createElement('p');
             movieDir.textContent = `Director: ${filmDetails[property]}`;
             popup.appendChild(movieDir);
-        } else if(property === 'writers'){
+            break;
+        case 'writers':
             let movieWrit = document.createElement('p');
             movieWrit.textContent = `Writer: ${filmDetails[property]}`;
-            popup.appendChild(movieWrit)
-        } else if(property === 'genres'){
+            popup.appendChild(movieWrit);
+            break;
+        case 'genres':
             let movieGenre = document.createElement('p');
             movieGenre.textContent = `Genre: ${filmDetails[property]}`;
             popup.appendChild(movieGenre);
-        } else if(property === 'actorList'){
+            break;
+//affichage des photos des acteurs 
+        case 'actorList':
             let actorsDiv = document.createElement('div');
-            actorsDiv.classList.add('card-group');
-            popup.appendChild(actorsDiv);
-            for(const actor of filmDetails[property]){
-            let actorCard = document.createElement('div');
-            actorCard.classList.add('col-4');
-            actorsDiv.appendChild(actorCard);
-                        let actorImg = document.createElement('div');
-                        actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top"></img>`;
-                        actorCard.appendChild(actorImg);
-                    
-                        let actorName = document.createElement('h5');
-                        actorName.textContent = actor.name;
-                        actorCard.appendChild(actorName);
-                    
-                        let actorChar = document.createElement('p');
-                        actorChar.textContent = `as ${actor.asCharacter}`;
-                        actorCard.appendChild(actorChar);
-                    
-                    actorsDiv.appendChild(actorCard)
-                }
+        actorsDiv.classList.add('card-group');
+        popup.appendChild(actorsDiv);
+        for(const actor of filmDetails[property]){
+        let actorCard = document.createElement('div');
+        actorCard.classList.add('col-4');
+        actorsDiv.appendChild(actorCard);
+                    let actorImg = document.createElement('div');
+                    actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top"></img>`;
+                    actorCard.appendChild(actorImg);
+                
+                    let actorName = document.createElement('h5');
+                    actorName.textContent = actor.name;
+                    actorCard.appendChild(actorName);
+                
+                    let actorChar = document.createElement('p');
+                    actorChar.textContent = `as ${actor.asCharacter}`;
+                    actorCard.appendChild(actorChar);
+                
+                actorsDiv.appendChild(actorCard)
             }
-        }
+    }
+}
+    
     bouton.addEventListener('click', ()=>{
         popup.innerHTML = '';
         section.removeChild(popup);
     })
 }
+// //affichage des éléments
+// for (const property in filmDetails){
+//     if(property === 'title'){
+//         let movieTitle = document.createElement('h3');
+//         movieTitle.textContent = filmDetails[property];
+//         popup.appendChild(movieTitle);
+//     } 
+//     else if (property === 'releaseDate'){
+//         let movieDate = document.createElement('p');
+//         movieDate.textContent = `Release date: ${filmDetails[property]}`;
+//         popup.appendChild(movieDate);
+//     }   else if (property === 'runtimeStr'){
+//         let movieRuntime = document.createElement('p');
+//         movieRuntime.textContent = `Runtime: ${filmDetails[property]}`;
+//         popup.appendChild(movieRuntime)
+//     } else if (property === 'plot') {
+//         let moviePlot = document.createElement('p');
+//         moviePlot.textContent = filmDetails[property];
+//         popup.appendChild(moviePlot);
+//     } else if(property === 'directors'){
+//         let movieDir = document.createElement('p');
+//         movieDir.textContent = `Director: ${filmDetails[property]}`;
+//         popup.appendChild(movieDir);
+//     } else if(property === 'writers'){
+//         let movieWrit = document.createElement('p');
+//         movieWrit.textContent = `Writer: ${filmDetails[property]}`;
+//         popup.appendChild(movieWrit)
+//     } else if(property === 'genres'){
+//         let movieGenre = document.createElement('p');
+//         movieGenre.textContent = `Genre: ${filmDetails[property]}`;
+//         popup.appendChild(movieGenre);
+// //affichage des photos des acteurs            
+    // } else if(property === 'actorList'){
+    //     let actorsDiv = document.createElement('div');
+    //     actorsDiv.classList.add('card-group');
+    //     popup.appendChild(actorsDiv);
+    //     for(const actor of filmDetails[property]){
+    //     let actorCard = document.createElement('div');
+    //     actorCard.classList.add('col-4');
+    //     actorsDiv.appendChild(actorCard);
+    //                 let actorImg = document.createElement('div');
+    //                 actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top"></img>`;
+    //                 actorCard.appendChild(actorImg);
+                
+    //                 let actorName = document.createElement('h5');
+    //                 actorName.textContent = actor.name;
+    //                 actorCard.appendChild(actorName);
+                
+    //                 let actorChar = document.createElement('p');
+    //                 actorChar.textContent = `as ${actor.asCharacter}`;
+    //                 actorCard.appendChild(actorChar);
+                
+    //             actorsDiv.appendChild(actorCard)
+    //         }
+    //     }
+    // }
