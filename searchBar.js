@@ -7,8 +7,8 @@ const search = document.getElementById('search');
 // l'url de base de l'API
 const url = 'https://imdb-api.com/en/API/SearchMovie/k_7wu03o0q/';
 
-//la section où sont stockés les resultats
-const section = document.getElementById('choice');
+//div avec les résultats
+const resField = document.getElementById('resField');
 
 
 // la fonction qui récupère les données correspondant à la recherche
@@ -28,13 +28,14 @@ async function getFilms(){
 //resultats 
 search.addEventListener('click', function(){
     getFilms();
-    section.innerHTML = '';
+    // section.innerHTML = '';
 });
 
 const showFilms = (filmsArray) =>{
-    for(filmObject of filmsArray){
+    
+        for(filmObject of filmsArray){
         const article = document.createElement('article');
-        section.appendChild(article);
+        resField.appendChild(article);
         article.classList.add('col-12', 'col-md-6', 'col-lg-4', 'mt-2');
         for(element in filmObject) {
             if(element === 'title'){
@@ -76,7 +77,7 @@ const showFilms = (filmsArray) =>{
 //fonction qui  affiche les infos détaillées dans un popup
 const showDetails = (filmDetails) =>{
     const popup = document.createElement('aside');
-    section.appendChild(popup);
+    resField.appendChild(popup);
     const bouton = document.createElement('button');
     bouton.textContent = 'X';
     bouton.id = 'bouton';
@@ -89,6 +90,6 @@ const showDetails = (filmDetails) =>{
     list.appendChild(line);
     bouton.addEventListener('click', ()=>{
         popup.innerHTML = '';
-        section.removeChild(popup);
+        resField.removeChild(popup);
     })
 }}

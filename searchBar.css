@@ -40,7 +40,7 @@ aside {
     right: 15%;
     overflow: scroll;
 }
-.reqField{
+/* .reqField{
     display: flex;
     justify-content: center;
     margin-top: 5%;
@@ -62,7 +62,7 @@ aside {
     margin-left: 1%;
     background-color:  #4C4C4C;
     color: #D1D1D1;
-}
+} */
 @media screen and (max-width: 450px) {
     h1{
         font-size: 3em;
