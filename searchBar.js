@@ -44,7 +44,7 @@ const showFilms = (filmsArray) =>{
 //récupération de l'id IMDB du film pour la recherche par id (plus détaillée)
                 const newUrl = 'https://imdb-api.com/en/API/Title/k_7wu03o0q/';
                 const newEndpoint = `${newUrl}${filmObject.id}`;
-                filmTitle.addEventListener('click', async function getDetails(e){
+                filmTitle.addEventListener('click', async function getDetails(){
                     e.preventDefault;
 //envoie de requête à l'API avec l'id du film
                     try{
@@ -151,59 +151,3 @@ for (const property in filmDetails){
         section.removeChild(popup);
     })
 }
-// //affichage des éléments
-// for (const property in filmDetails){
-//     if(property === 'title'){
-//         let movieTitle = document.createElement('h3');
-//         movieTitle.textContent = filmDetails[property];
-//         popup.appendChild(movieTitle);
-//     } 
-//     else if (property === 'releaseDate'){
-//         let movieDate = document.createElement('p');
-//         movieDate.textContent = `Release date: ${filmDetails[property]}`;
-//         popup.appendChild(movieDate);
-//     }   else if (property === 'runtimeStr'){
-//         let movieRuntime = document.createElement('p');
-//         movieRuntime.textContent = `Runtime: ${filmDetails[property]}`;
-//         popup.appendChild(movieRuntime)
-//     } else if (property === 'plot') {
-//         let moviePlot = document.createElement('p');
-//         moviePlot.textContent = filmDetails[property];
-//         popup.appendChild(moviePlot);
-//     } else if(property === 'directors'){
-//         let movieDir = document.createElement('p');
-//         movieDir.textContent = `Director: ${filmDetails[property]}`;
-//         popup.appendChild(movieDir);
-//     } else if(property === 'writers'){
-//         let movieWrit = document.createElement('p');
-//         movieWrit.textContent = `Writer: ${filmDetails[property]}`;
-//         popup.appendChild(movieWrit)
-//     } else if(property === 'genres'){
-//         let movieGenre = document.createElement('p');
-//         movieGenre.textContent = `Genre: ${filmDetails[property]}`;
-//         popup.appendChild(movieGenre);
-// //affichage des photos des acteurs            
-    // } else if(property === 'actorList'){
-    //     let actorsDiv = document.createElement('div');
-    //     actorsDiv.classList.add('card-group');
-    //     popup.appendChild(actorsDiv);
-    //     for(const actor of filmDetails[property]){
-    //     let actorCard = document.createElement('div');
-    //     actorCard.classList.add('col-4');
-    //     actorsDiv.appendChild(actorCard);
-    //                 let actorImg = document.createElement('div');
-    //                 actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top"></img>`;
-    //                 actorCard.appendChild(actorImg);
-                
-    //                 let actorName = document.createElement('h5');
-    //                 actorName.textContent = actor.name;
-    //                 actorCard.appendChild(actorName);
-                
-    //                 let actorChar = document.createElement('p');
-    //                 actorChar.textContent = `as ${actor.asCharacter}`;
-    //                 actorCard.appendChild(actorChar);
-                
-    //             actorsDiv.appendChild(actorCard)
-    //         }
-    //     }
-    // }
