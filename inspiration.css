@@ -1,3 +1,18 @@
 .imageInsp{
     height: 50vh;
 }
+aside {
+    width: 60%;
+    height: 80%;
+    padding: 1%;
+    background-color: #DBDBDB;
+    position: fixed;
+    top: 15%;
+    right: 15%;
+    overflow: scroll;
+    text-align: justify;
+}
+.actorimg{
+    height: 50vh;
+    margin: 1%;
+}
