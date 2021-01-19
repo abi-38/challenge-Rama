@@ -28,11 +28,19 @@ async function getFilms(){
 //resultats 
 search.addEventListener('click', function(){
     getFilms();
-    // section.innerHTML = '';
+    resField.innerHTML = '';
 });
-
+//affichage des résultats
 const showFilms = (filmsArray) =>{
-    
+//bouton qui ferme les résultats
+    const firstCloseButton = document.createElement('button');
+    firstCloseButton.textContent = 'Close';
+    firstCloseButton.classList.add('col-12');
+    resField.appendChild(firstCloseButton);
+    firstCloseButton.addEventListener('click', ()=> {
+        resField.innerHTML = '';
+    })
+//présentation des résultats
         for(filmObject of filmsArray){
         const article = document.createElement('article');
         resField.appendChild(article);
@@ -78,18 +86,77 @@ const showFilms = (filmsArray) =>{
 const showDetails = (filmDetails) =>{
     const popup = document.createElement('aside');
     resField.appendChild(popup);
-    const bouton = document.createElement('button');
-    bouton.textContent = 'X';
-    bouton.id = 'bouton';
-    popup.appendChild(bouton);
-                            let list = document.createElement('ul');
-    popup.appendChild(list);
-    for (property in filmDetails){
-    let line = document.createElement('li');
-    line.textContent = `${filmDetails[property]}`;
-    list.appendChild(line);
-    bouton.addEventListener('click', ()=>{
+    const secondCloseButton = document.createElement('button');
+    secondCloseButton.textContent = 'Close';
+    secondCloseButton.id = 'bouton';
+    popup.appendChild(secondCloseButton);
+
+//switch avec les données
+for (const property in filmDetails){
+    switch(property){
+        case 'title':
+            let movieTitle = document.createElement('h3');
+            movieTitle.textContent = filmDetails[property];
+            popup.appendChild(movieTitle);
+            break;
+        case 'releaseDate':
+            let movieDate = document.createElement('p');
+            movieDate.textContent = `Release date: ${filmDetails[property]}`;
+            popup.appendChild(movieDate);
+            break;
+        case 'runtimeStr':
+            let movieRuntime = document.createElement('p');
+            movieRuntime.textContent = `Runtime: ${filmDetails[property]}`;
+            popup.appendChild(movieRuntime)
+            break;
+        case 'plot':
+            let moviePlot = document.createElement('p');
+            moviePlot.textContent = filmDetails[property];
+            popup.appendChild(moviePlot);
+            break;
+        case 'directors':
+            let movieDir = document.createElement('p');
+            movieDir.textContent = `Director: ${filmDetails[property]}`;
+            popup.appendChild(movieDir);
+            break;
+        case 'writers':
+            let movieWrit = document.createElement('p');
+            movieWrit.textContent = `Writer: ${filmDetails[property]}`;
+            popup.appendChild(movieWrit);
+            break;
+        case 'genres':
+            let movieGenre = document.createElement('p');
+            movieGenre.textContent = `Genre: ${filmDetails[property]}`;
+            popup.appendChild(movieGenre);
+            break;
+//affichage des photos des acteurs 
+        case 'actorList':
+            let actorsDiv = document.createElement('div');
+        actorsDiv.classList.add('card-group');
+        popup.appendChild(actorsDiv);
+        for(const actor of filmDetails[property]){
+        let actorCard = document.createElement('div');
+        actorCard.classList.add('col-4');
+        actorsDiv.appendChild(actorCard);
+                    let actorImg = document.createElement('div');
+                    actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top"></img>`;
+                    actorCard.appendChild(actorImg);
+                
+                    let actorName = document.createElement('h5');
+                    actorName.textContent = actor.name;
+                    actorCard.appendChild(actorName);
+                
+                    let actorChar = document.createElement('p');
+                    actorChar.textContent = `as ${actor.asCharacter}`;
+                    actorCard.appendChild(actorChar);
+                
+                actorsDiv.appendChild(actorCard)
+            }
+    }
+}
+// bouton qui ferme le popup du film    
+secondCloseButton.addEventListener('click', ()=>{
         popup.innerHTML = '';
         resField.removeChild(popup);
     })
-}}
+}
