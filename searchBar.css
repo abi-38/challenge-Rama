@@ -15,7 +15,7 @@ article h3:hover {
 
 .imgPres {
     width: 50%;
-    height: 50%;
+    height: 50vh;
 }
 aside {
     width: 60%;
@@ -31,7 +31,17 @@ aside {
     top: 8%;
     right: 0;
     background-color: #4C4C4C;
-    }
+}
+.imgAct{
+    height: 50vh;
+}
+
+.closebutton{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
 
 @media screen and (max-width: 450px) {
     h1{

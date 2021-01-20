@@ -35,7 +35,7 @@ const showFilms = (filmsArray) =>{
 //bouton qui ferme les résultats
     const firstCloseButton = document.createElement('button');
     firstCloseButton.textContent = 'Close';
-    firstCloseButton.classList.add('col-12');
+    firstCloseButton.classList.add('col-12', 'closebutton');
     resField.appendChild(firstCloseButton);
     firstCloseButton.addEventListener('click', ()=> {
         resField.innerHTML = '';
@@ -86,9 +86,10 @@ const showFilms = (filmsArray) =>{
 const showDetails = (filmDetails) =>{
     const popup = document.createElement('aside');
     resField.appendChild(popup);
+//bouton qui ferme le popup
     const secondCloseButton = document.createElement('button');
     secondCloseButton.textContent = 'Close';
-    secondCloseButton.id = 'bouton';
+    secondCloseButton.classList.add('closebutton');
     popup.appendChild(secondCloseButton);
 
 //switch avec les données
@@ -136,10 +137,10 @@ for (const property in filmDetails){
         popup.appendChild(actorsDiv);
         for(const actor of filmDetails[property]){
         let actorCard = document.createElement('div');
-        actorCard.classList.add('col-4');
+        actorCard.classList.add('col-12', 'col-md-6', 'col-lg-4');
         actorsDiv.appendChild(actorCard);
                     let actorImg = document.createElement('div');
-                    actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top"></img>`;
+                    actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top imgAct"></img>`;
                     actorCard.appendChild(actorImg);
                 
                     let actorName = document.createElement('h5');
