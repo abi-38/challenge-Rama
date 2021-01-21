@@ -108,7 +108,7 @@ for (const property in filmDetails){
         popup.appendChild(actorsDiv);
         for(const actor of filmDetails[property]){
         let actorCard = document.createElement('div');
-        actorCard.classList.add('col-4');
+        actorCard.classList.add('col-12', 'col-md-6', 'col-lg-4');
         actorsDiv.appendChild(actorCard);
                     let actorImg = document.createElement('div');
                     actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top actorimg"></img>`;
