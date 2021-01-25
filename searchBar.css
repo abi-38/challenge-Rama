@@ -20,11 +20,13 @@ article h3:hover {
 aside {
     width: 60%;
     height: 80%;
-    background-color: aliceblue;
+    padding: 1%;
+    background-color: #DBDBDB;
     position: fixed;
     top: 15%;
     right: 15%;
     overflow: scroll;
+    text-align: justify;
 }
 #resField{
     position: absolute;
@@ -41,7 +43,6 @@ aside {
     top: 0;
     z-index: 1;
 }
-
 
 @media screen and (max-width: 450px) {
     h1{

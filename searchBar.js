@@ -40,12 +40,11 @@ const showFilms = (filmsArray) =>{
     firstCloseButton.addEventListener('click', ()=> {
         resField.innerHTML = '';
     })
-//présentation des résultats
-        for(filmObject of filmsArray){
+    for(const filmObject of filmsArray){
         const article = document.createElement('article');
         resField.appendChild(article);
         article.classList.add('col-12', 'col-md-6', 'col-lg-4', 'mt-2');
-        for(element in filmObject) {
+        for(const element in filmObject) {
             if(element === 'title'){
                 let filmTitle = document.createElement('h3');
                 filmTitle.textContent = `${filmObject[element]}`;
@@ -141,6 +140,7 @@ for (const property in filmDetails){
         actorsDiv.appendChild(actorCard);
                     let actorImg = document.createElement('div');
                     actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top imgAct"></img>`;
+  
                     actorCard.appendChild(actorImg);
                 
                     let actorName = document.createElement('h5');
@@ -157,6 +157,8 @@ for (const property in filmDetails){
 }
 // bouton qui ferme le popup du film    
 secondCloseButton.addEventListener('click', ()=>{
+ 
+
         popup.innerHTML = '';
         resField.removeChild(popup);
     })
