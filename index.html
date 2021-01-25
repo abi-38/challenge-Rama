@@ -11,7 +11,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a id="logo" class="navbar-brand" href="#">Logo</a>
+      <a id="logo" class="navbar-brand" href="#"><img id="logo" src="img/logo.png" alt="image-logo"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -23,6 +23,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Films</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Séries</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,21 +46,66 @@
           <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search" id="query">
           <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="search">Rechercher</button>
 
+
       </div>
     </nav>
   </header>
   <main>
+
     <div class="container-fluid">
       <div class="row" id="resField">
       </div>
 
     </div>
+
+
+<!-- recherche -->
+<div class="reqField">
+  <input type="text" id="query" placeholder="Search...">
+  <button id="search">Search</button>
+</div>
+    <div class="container-fluid">
+      <section class="row text-center" id="choice">
+  </section>
+  </div>
+<!-- fin de recherche -->   
+
     <h1>Sélection de films Girls power !!</h1>
     <h2>Box Office</h2>
     <div id='boxOffice'></div>
     <h2>Les plus populaires</h2>
     <div id='plusPopulaire'></div>
   </main>
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4 col-12 d-flex justify-content-center">
+          <img src="img/logo.png" alt="image-footer" id="imageFooter">
+        </div>
+        <div class="col-lg-4 col-12 text-center">
+          <h3 class="titreFooter">Menu</h3>
+          <ul class="ul">
+            <li class="li"><a href="#">Films</a></li>
+            <li class="li"><a href="#">Séries</a></li>
+            <li class="li"><a href="#">Les catégories</a></li>
+            <li class="li"><a href="#">Inspirations</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-12 text-center">
+          <h3 class="titreFooter">Général</h3>
+          <ul class="ul">
+            <li class="li"><a href="#">Nous contacter</a></li>
+            <li class="li"><a href="#">Informations légales</a></li>
+            <li class="li"><a href="#">Confidentialité</a></li>
+            <li class="li"><a href="#">Mentions légales</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+</footer>
+
+
+
   <script src="apiRest.js"></script>
   <script src="searchBar.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

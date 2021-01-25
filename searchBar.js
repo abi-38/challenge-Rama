@@ -52,7 +52,7 @@ const showFilms = (filmsArray) =>{
 //récupération de l'id IMDB du film pour la recherche par id (plus détaillée)
                 const newUrl = 'https://imdb-api.com/en/API/Title/k_7wu03o0q/';
                 const newEndpoint = `${newUrl}${filmObject.id}`;
-                filmTitle.addEventListener('click', async function getDetails(e){
+                filmTitle.addEventListener('click', async function getDetails(){
                     e.preventDefault;
 //envoie de requête à l'API avec l'id du film
                     try{
