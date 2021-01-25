@@ -1,82 +1,63 @@
-// la recherche de l'utilisateur
-const input = document.getElementById('query');
+//sections d'affichage
+const movieInsp = document.getElementById('movieInsp');
+const seriesInsp = document.getElementById('seriesInsp');
 
-// bouton de recherche
-const search = document.getElementById('search');
-
-// l'url de base de l'API
-const url = 'https://imdb-api.com/en/API/SearchMovie/k_7wu03o0q/';
-
-//la section où sont stockés les resultats
-const section = document.getElementById('choice');
-
-
-// la fonction qui récupère les données correspondant à la recherche
-async function getFilms(){
-    const query = input.value;
-    const endpoint = `${url}${query}`;
-    try{
-        const request = await fetch(endpoint);
-        const result = await request.json();
-        showFilms(result.results)
-    }
-    catch (error){
-    console.log(error)
-    }
-}
-
-//resultats 
-search.addEventListener('click', function(){
-    getFilms();
-    section.innerHTML = '';
+// bouton qui lance la requête pour les films
+const inspMovieButton = document.getElementById('inspire-movie-button');
+inspMovieButton.addEventListener('click', function() {
+    getInspired('https://imdb-api.com/en/API/Top250Movies/k_7wu03o0q', movieInsp)
 });
 
-const showFilms = (filmsArray) =>{
-    for(const filmObject of filmsArray){
-        const article = document.createElement('article');
-        section.appendChild(article);
-        article.classList.add('col-12', 'col-md-6', 'col-lg-4', 'mt-2');
-        for(const element in filmObject) {
-            if(element === 'title'){
-                let filmTitle = document.createElement('h3');
-                filmTitle.textContent = `${filmObject[element]}`;
-                article.appendChild(filmTitle);
-//récupération de l'id IMDB du film pour la recherche par id (plus détaillée)
-                const newUrl = 'https://imdb-api.com/en/API/Title/k_7wu03o0q/';
-                const newEndpoint = `${newUrl}${filmObject.id}`;
-                filmTitle.addEventListener('click', async function getDetails(){
-                    e.preventDefault;
-//envoie de requête à l'API avec l'id du film
-                    try{
-                        const newReq = await fetch(newEndpoint);
-                        const newRes = await newReq.json();
-                        showDetails(newRes)
-//fonction qui affiche les résultats de la deuxième requête
-                        
-//fin de la fonction d'affichage
-                        }
-                    catch(error){
-                        console.log(error)
-                    }
-                })
-            }                
-            else if(element === 'image'){
-                let image = document.createElement('p');
-                image.innerHTML += `<img class="imgPres" src="${filmObject[element]}"></img>`;
-                article.appendChild(image) 
-                
-            } else if(element === 'description') {
-                let year = document.createElement('p');
-                year.textContent = `Year : ${filmObject[element]}`;
-                article.appendChild(year)
-            }
-        }
+//bouton qui lance la requête pour les séries
+const inspSeriesButton = document.getElementById('inspire-series-button');
+inspSeriesButton.addEventListener('click', function(){
+    getInspired('https://imdb-api.com/en/API/Top250TVs/k_7wu03o0q', seriesInsp)
+})
+
+// fonction qui récupère la liste des films et en choisit un 
+async function getInspired(url, section){
+    try{
+        const request = await fetch (url);
+        const result = await request.json();
+//génération d'un nombre aléatoire
+        const random = Math.floor(Math.random()*250);
+//fonction qui affiche le résultat
+        showInsp(result.items[random], section)
     }
+    catch(error){
+        console.log(error)
+    }
+    }
+
+//l'affichage du film/série
+function showInsp(filmObject, film){
+    film.innerHTML = '';
+    const filmTitle = document.createElement('h3');
+    filmTitle.textContent = filmObject.title;
+    filmTitle.addEventListener('click', async function getInspDetails(){
+        try{
+            const newRequest = await fetch('https://imdb-api.com/en/API/Title/k_7wu03o0q/' + filmObject.id);
+            const newResult = await newRequest.json();
+            showDetails(newResult)
+        }
+        catch(error){
+            console.log(error)
+        }
+    })
+    const filmYear = document.createElement('p');
+    filmYear.textContent = filmObject.year;
+    const filmImg = document.createElement('p');
+    filmImg.innerHTML = `<img src="${filmObject.image}" class="imageInsp"></img>`;
+    film.appendChild(filmTitle);
+    film.appendChild(filmYear);
+    film.appendChild(filmImg);
 }
-//fonction qui  affiche les infos détaillées dans un popup
+
+
 const showDetails = (filmDetails) =>{
     const popup = document.createElement('aside');
-    section.appendChild(popup);
+    const mainField = document.getElementById('mainField');
+    mainField.appendChild(popup);
     const bouton = document.createElement('button');
     bouton.textContent = 'Close';
     bouton.id = 'bouton';
@@ -127,10 +108,10 @@ for (const property in filmDetails){
         popup.appendChild(actorsDiv);
         for(const actor of filmDetails[property]){
         let actorCard = document.createElement('div');
-        actorCard.classList.add('col-4');
+        actorCard.classList.add('col-12', 'col-md-6', 'col-lg-4');
         actorsDiv.appendChild(actorCard);
                     let actorImg = document.createElement('div');
-                    actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top"></img>`;
+                    actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top actorimg"></img>`;
                     actorCard.appendChild(actorImg);
                 
                     let actorName = document.createElement('h5');
@@ -148,6 +129,6 @@ for (const property in filmDetails){
     
     bouton.addEventListener('click', ()=>{
         popup.innerHTML = '';
-        section.removeChild(popup);
+        mainField.removeChild(popup);
     })
 }
