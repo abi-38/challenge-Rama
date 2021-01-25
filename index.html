@@ -39,17 +39,25 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Inspirations</a>
+            <a class="nav-link disabled" href="inspiration.html" tabindex="-1" aria-disabled="true">Inspirations</a>
           </li>
         </ul>
-        <!-- <form class="form-inline my-2 my-lg-0"> -->
-          <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
-          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Rechercher</button>
-        <!-- </form> -->
+
+          <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search" id="query">
+          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="search">Rechercher</button>
+
+
       </div>
     </nav>
   </header>
   <main>
+
+    <div class="container-fluid">
+      <div class="row" id="resField">
+      </div>
+
+    </div>
+
 
 <!-- recherche -->
 <div class="reqField">
@@ -61,6 +69,7 @@
   </section>
   </div>
 <!-- fin de recherche -->   
+
     <h1>Sélection de films Girls power !!</h1>
     <h2>Box Office</h2>
     <div id='boxOffice'></div>

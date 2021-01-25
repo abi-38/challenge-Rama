@@ -7,8 +7,8 @@ const search = document.getElementById('search');
 // l'url de base de l'API
 const url = 'https://imdb-api.com/en/API/SearchMovie/k_7wu03o0q/';
 
-//la section où sont stockés les resultats
-const section = document.getElementById('choice');
+//div avec les résultats
+const resField = document.getElementById('resField');
 
 
 // la fonction qui récupère les données correspondant à la recherche
@@ -28,13 +28,21 @@ async function getFilms(){
 //resultats 
 search.addEventListener('click', function(){
     getFilms();
-    section.innerHTML = '';
+    resField.innerHTML = '';
 });
-
+//affichage des résultats
 const showFilms = (filmsArray) =>{
+//bouton qui ferme les résultats
+    const firstCloseButton = document.createElement('button');
+    firstCloseButton.textContent = 'Close';
+    firstCloseButton.classList.add('col-12', 'closebutton');
+    resField.appendChild(firstCloseButton);
+    firstCloseButton.addEventListener('click', ()=> {
+        resField.innerHTML = '';
+    })
     for(const filmObject of filmsArray){
         const article = document.createElement('article');
-        section.appendChild(article);
+        resField.appendChild(article);
         article.classList.add('col-12', 'col-md-6', 'col-lg-4', 'mt-2');
         for(const element in filmObject) {
             if(element === 'title'){
@@ -76,13 +84,14 @@ const showFilms = (filmsArray) =>{
 //fonction qui  affiche les infos détaillées dans un popup
 const showDetails = (filmDetails) =>{
     const popup = document.createElement('aside');
-    section.appendChild(popup);
-    const bouton = document.createElement('button');
-    bouton.textContent = 'Close';
-    bouton.id = 'bouton';
-    popup.appendChild(bouton);
+    resField.appendChild(popup);
+//bouton qui ferme le popup
+    const secondCloseButton = document.createElement('button');
+    secondCloseButton.textContent = 'Close';
+    secondCloseButton.classList.add('closebutton');
+    popup.appendChild(secondCloseButton);
 
-//test avec le switch
+//switch avec les données
 for (const property in filmDetails){
     switch(property){
         case 'title':
@@ -127,10 +136,11 @@ for (const property in filmDetails){
         popup.appendChild(actorsDiv);
         for(const actor of filmDetails[property]){
         let actorCard = document.createElement('div');
-        actorCard.classList.add('col-4');
+        actorCard.classList.add('col-12', 'col-md-6', 'col-lg-4');
         actorsDiv.appendChild(actorCard);
                     let actorImg = document.createElement('div');
-                    actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top"></img>`;
+                    actorImg.innerHTML = `<img src="${actor.image}" class="card-img-top imgAct"></img>`;
+  
                     actorCard.appendChild(actorImg);
                 
                     let actorName = document.createElement('h5');
@@ -145,9 +155,11 @@ for (const property in filmDetails){
             }
     }
 }
-    
-    bouton.addEventListener('click', ()=>{
+// bouton qui ferme le popup du film    
+secondCloseButton.addEventListener('click', ()=>{
+ 
+
         popup.innerHTML = '';
-        section.removeChild(popup);
+        resField.removeChild(popup);
     })
 }
